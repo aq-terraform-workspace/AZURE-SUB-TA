@@ -6,9 +6,9 @@ locals {
 }
 
 module "terraform-azure-logic-app" {
-  source              = "git::https://github.com/aq-terraform-modules/logic-app.git"
+  source              = "git::https://github.com/aq-terraform-modules/logic-app.git?ref=DEV-Custom_action"
 
-  resource_group_name = "${subscription_name}-logicapp"
+  resource_group_name = "${local.subscription_name}-logicapp"
   location            = local.location
   logic_app_name      = "logicapp"
 }
