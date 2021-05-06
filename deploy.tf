@@ -5,8 +5,16 @@ locals {
   location = "southeastasia"
 }
 
-module "terraform-azure-logic-app" {
-  source              = "git::https://github.com/aq-terraform-modules/logic-app.git"
+# module "terraform-azure-logic-app" {
+#   source              = "git::https://github.com/aq-terraform-modules/logic-app.git"
+
+#   resource_group_name = "${subscription_name}-logicapp"
+#   location            = local.location
+#   logic_app_name      = "logicapp"
+# }
+
+module "terraform-azure-postgresql-aks" {
+  source              = "git::https://github.com/aq-terraform-modules/postgresql-aks.git"
 
   resource_group_name = "${subscription_name}-logicapp"
   location            = local.location
