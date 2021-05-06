@@ -11,4 +11,13 @@ module "terraform-azure-postgresql-aks" {
   resource_group_name = "${local.subscription_name}-aks"
   location            = local.location
   aks_name            = "test-aks"
+  kubernetes_version  = "1.19.9"
+
+  # Nodepool section
+  node_auto_scale     = true
+  node_min_count      = 3
+  node_max_count      = 5
+
+  # Tag section
+  tag_env             = "Development"
 }

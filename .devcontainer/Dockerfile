@@ -19,6 +19,7 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
 
 # [Option] Install Azure CLI
 ARG INSTALL_AZURE_CLI="true"
+ARG INSTALL_KUBECTL="true"
 # [Option] Install Docker CLI
 ARG INSTALL_DOCKER="true"
 # [Option] Install Node.js
