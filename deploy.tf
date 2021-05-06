@@ -14,9 +14,9 @@ locals {
 # }
 
 module "terraform-azure-postgresql-aks" {
-  source              = "git::https://github.com/aq-terraform-modules/postgresql-aks.git"
+  source              = "git::https://github.com/aq-terraform-modules/postgresql-aks.git?DEV-PostgreSQL_AKS"
 
-  resource_group_name = "${subscription_name}-logicapp"
+  resource_group_name = "${subscription_name}-aks"
   location            = local.location
-  logic_app_name      = "logicapp"
+  aks_name            = "test-aks"
 }
