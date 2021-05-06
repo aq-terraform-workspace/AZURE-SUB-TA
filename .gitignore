@@ -35,4 +35,4 @@ terraform.rc
 
 # Ignore other files
 *.hcl
-plan
+*.plan
