@@ -1,3 +1,4 @@
+#  Replace these value to your own value
 locals {
   tenant_id         = "c14b46fc-2780-4bee-bcfa-e3f5a1c337b9"
   subscription_name = "AZURE-SUB-TA"

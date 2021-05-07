@@ -17,6 +17,7 @@ provider "azurerm" {
 }
 
 # Backend configuration
+# Replace these values to your own
 terraform {
   backend "azurerm" {
     resource_group_name   = "tfstate"
