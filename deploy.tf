@@ -7,11 +7,11 @@ locals {
 }
 
 module "terraform-generate-ssh-key" {
-  source              = "git::https://github.com/aq-terraform-modules/generate-ssh-key.git?ref=DEV-Generate_SSH_Key"
+  source              = "git::https://github.com/aq-terraform-modules/generate-ssh-key.git?ref=v1.0"
 }
 
 module "terraform-azure-postgresql-aks" {
-  source              = "git::https://github.com/aq-terraform-modules/postgresql-aks.git?ref=DEV-PostgreSQL_AKS"
+  source              = "git::https://github.com/aq-terraform-modules/postgresql-aks.git?ref=v1.0"
 
   resource_group_name = "${local.subscription_name}-aks"
   location            = local.location
