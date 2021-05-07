@@ -5,6 +5,10 @@ locals {
   location          = "southeastasia"
 }
 
+module "terraform-generate-ssh-key" {
+  source              = "git::https://github.com/aq-terraform-modules/generate-ssh-key.git?ref=DEV-Generate_SSH_Key"
+}
+
 module "terraform-azure-postgresql-aks" {
   source              = "git::https://github.com/aq-terraform-modules/postgresql-aks.git?ref=DEV-PostgreSQL_AKS"
 
@@ -13,10 +17,14 @@ module "terraform-azure-postgresql-aks" {
   aks_name            = "test-aks"
   kubernetes_version  = "1.19.9"
 
+  # Linux profile
+  public_ssh_key = module.terraform-generate-ssh-key.public_ssh_key
+
   # Nodepool section
-  node_auto_scale     = true
-  node_min_count      = 3
-  node_max_count      = 5
+  node_auto_scale       = true
+  node_min_count        = 3
+  node_max_count        = 5
+  node_public_ip        = true
 
   # Tag section
   tag_env             = "Development"

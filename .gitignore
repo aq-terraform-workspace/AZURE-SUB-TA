@@ -36,3 +36,6 @@ terraform.rc
 # Ignore other files
 *.hcl
 *.plan
+
+# Ignore creds folder
+**/creds/*
