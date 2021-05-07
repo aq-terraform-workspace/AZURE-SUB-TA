@@ -1,14 +1,32 @@
+#  Replace these value to your own value
 locals {
   tenant_id         = "c14b46fc-2780-4bee-bcfa-e3f5a1c337b9"
   subscription_name = "AZURE-SUB-TA"
   subscription_id   = "d0767e87-e2a6-4477-a762-768ce1367057"
-  location = "southeastasia"
+  location          = "southeastasia"
 }
 
-module "terraform-azure-logic-app" {
-  source              = "git::https://github.com/aq-terraform-modules/logic-app.git"
+module "terraform-generate-ssh-key" {
+  source              = "git::https://github.com/aq-terraform-modules/generate-ssh-key.git?ref=DEV-Generate_SSH_Key"
+}
 
-  resource_group_name = "${subscription_name}-logicapp"
+module "terraform-azure-postgresql-aks" {
+  source              = "git::https://github.com/aq-terraform-modules/postgresql-aks.git?ref=DEV-PostgreSQL_AKS"
+
+  resource_group_name = "${local.subscription_name}-aks"
   location            = local.location
-  logic_app_name      = "logicapp"
+  aks_name            = "test-aks"
+  kubernetes_version  = "1.19.9"
+
+  # Linux profile
+  public_ssh_key = module.terraform-generate-ssh-key.public_ssh_key
+
+  # Nodepool section
+  node_auto_scale       = true
+  node_min_count        = 3
+  node_max_count        = 5
+  node_public_ip        = true
+
+  # Tag section
+  tag_env             = "Development"
 }

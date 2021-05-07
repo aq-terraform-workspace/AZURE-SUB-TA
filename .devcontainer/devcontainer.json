@@ -9,7 +9,8 @@
 			"TFLINT_VERSION": "0.18.0",
 			"INSTALL_AZURE_CLI": "true",
 			"INSTALL_DOCKER": "true",
-			"INSTALL_NODE": "true"
+			"INSTALL_NODE": "true",
+			"INSTALL_KUBECTL": "true"
 		}
 	},
 	"mounts": [ "source=/var/run/docker.sock,target=/var/run/docker-host.sock,type=bind" ],

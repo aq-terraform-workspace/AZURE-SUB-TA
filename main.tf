@@ -7,6 +7,7 @@ terraform {
     }
   }
 }
+
 provider "azurerm" {
   tenant_id       = local.tenant_id
   subscription_id = local.subscription_id
@@ -16,6 +17,7 @@ provider "azurerm" {
 }
 
 # Backend configuration
+# Replace these values to your own
 terraform {
   backend "azurerm" {
     resource_group_name   = "tfstate"
